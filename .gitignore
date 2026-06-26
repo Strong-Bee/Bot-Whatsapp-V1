@@ -1,70 +1,656 @@
-# Dependencies
+# ============================================
+# DEPENDENCIES
+# ============================================
 node_modules/
 package-lock.json
 yarn.lock
-
-# Environment
-.env
-.env.local
-.env.*.local
-
-# Logs
-logs/
-*.log
+pnpm-lock.yaml
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+pnpm-debug.log*
 lerna-debug.log*
 
-# Data
+# ============================================
+# ENVIRONMENT VARIABLES - JANGAN PERNAH COMMIT!
+# ============================================
+.env
+.env.local
+.env.*.local
+.env.production
+.env.development
+.env.test
+.env.staging
+.env.example
+*.env
+!.env.example
+!.env.template
+
+# ============================================
+# LOGS
+# ============================================
+logs/
+*.log
+*.log.*
+access.log
+error.log
+combined.log
+pm2-*.log
+
+# ============================================
+# DATA - Database & Storage
+# ============================================
 data/
+*.db
+*.sqlite
+*.sqlite3
 *.json
 !package.json
 !package-lock.json
+!tsconfig.json
+!composer.json
+*.backup
+*.bak
+*.old
+*.orig
 
-# Session
+# ============================================
+# WHATSAPP SESSION
+# ============================================
 session/
 .wwebjs_auth/
 .wwebjs_cache/
 puppeteer_data/
+chrome-data/
+.wwebjs_session/
+*.session
 
-# OS
+# ============================================
+# OPERATING SYSTEM
+# ============================================
 .DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
 Thumbs.db
+Thumbs.db:encryptable
+Desktop.ini
 desktop.ini
+$RECYCLE.BIN/
+*.exe
+*.dll
+*.so
+*.dylib
+*.bin
+*.com
+*.class
 
-# IDE
+# ============================================
+# IDE / EDITOR
+# ============================================
+# VS Code
 .vscode/
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+
+# IntelliJ / WebStorm
 .idea/
+*.iml
+*.iws
+*.ipr
+out/
+.idea_modules/
+.classpath
+.project
+.settings/
 *.swp
 *.swo
 *~
-.project
-.classpath
-.settings/
+*.orig
 
-# Build
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Atom
+.atom/
+.config/
+
+# Vim
+*.swp
+*.swo
+*.un~
+*.vim
+
+# Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+
+# ============================================
+# BUILD & DISTRIBUTION
+# ============================================
 dist/
 build/
 out/
+lib/
+bin/
 *.min.js
 *.min.css
+*.map
+*.js.map
+*.css.map
+*.tgz
+*.tar.gz
+*.zip
+*.rar
+*.7z
+*.gz
 
-# Temp
+# ============================================
+# TEMPORARY FILES
+# ============================================
 tmp/
 temp/
 *.tmp
 *.temp
-
-# Coverage
-coverage/
-.nyc_output/
-
-# Misc
+*.cache
+*.swp
+*.swo
+*.bak
+*.old
+*.orig
 *.pid
 *.seed
 *.pid.lock
-*.log
+*.lock
 
+# ============================================
+# COVERAGE & TEST
+# ============================================
+coverage/
+.nyc_output/
+*.lcov
+*.lcov.info
+*.coverage
+test-results/
+junit.xml
+.coveralls.yml
+
+# ============================================
+# PROCESS MANAGEMENT
+# ============================================
+.pm2/
+.pm2.json
+pm2.json
+ecosystem.config.js
+ecosystem.json
+process.json
+*.pid
+*.pid.lock
+
+# ============================================
+# SECURITY & CREDENTIALS
+# ============================================
+*.pem
+*.key
+*.crt
+*.csr
+*.p12
+*.pfx
+secrets/
+credentials/
+*.credential
+*.secret
+*.password
+*.token
+*.private
+*.cert
+
+# ============================================
+# API & INTEGRATION
+# ============================================
+google-credentials.json
+service-account.json
+oauth2.json
+*.oauth
+*.api-key
+*.apikey
+
+# ============================================
+# MISCELLANEOUS
+# ============================================
+# Docker
+Dockerfile
+docker-compose.yml
+.dockerignore
+
+# Kubernetes
+*.yaml
+*.yml
+!docker-compose.yml
+
+# Terraform
+*.tfstate
+*.tfstate.*
+.terraform/
+
+# Git
+*.orig
+*.rej
+*.patch
+*.diff
+*.merge
+
+# NPM
+.npm/
+.npmrc
+
+# Yarn
+.yarn/
+.yarnrc
+.yarnrc.yml
+
+# PNPM
+.pnpm/
+
+# TypeScript
+*.tsbuildinfo
+
+# Next.js
+.next/
+out/
+
+# Nuxt.js
+.nuxt/
+dist/
+
+# Gatsby
+.cache/
+public/
+
+# React
+build/
+dist/
+
+# Angular
+dist/
+tmp/
+out-tsc/
+
+# ============================================
+# CACHE
+# ============================================
+.cache/
+.parcel-cache/
+.eslintcache
+.stylelintcache
+.prettiercache
+*.cache
+*.metadata
+*.metadata_*
+*.translation
+
+# ============================================
+# DOCUMENTATION GENERATED
+# ============================================
+docs/_build/
+docs/_static/
+docs/_templates/
+apidoc/
+typedoc/
+
+# ============================================
+# DATABASE
+# ============================================
+*.sql
+*.sql.gz
+*.dump
+*.db-journal
+*.wal
+
+# ============================================
+# REDIS / MEMCACHED
+# ============================================
+dump.rdb
+appendonly.aof
+*.memcache
+
+# ============================================
+# ELASTICSEARCH
+# ============================================
+*.index
+*.segments
+*.translog
+
+# ============================================
+# MONGO DB
+# ============================================
+*.bson
+*.ns
+*.wt
+*.wt.*
+journal/
+diagnostic.data/
+
+# ============================================
+# PACKAGE MANAGERS
+# ============================================
+# NPM
+.npm
+.npmrc
+
+# Yarn
+.yarn
+.yarnrc
+.yarnrc.yml
+.yarn/releases/
+.yarn/plugins/
+.yarn/sdks/
+.yarn/versions/
+
+# PNPM
+.pnpm
+.pnpm-store/
+.pnpm-debug.log
+
+# ============================================
+# PYTHON
+# ============================================
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+venv/
+env/
+.venv/
+.python-version
+Pipfile.lock
+poetry.lock
+
+# ============================================
+# RUBY
+# ============================================
+*.gem
+*.rbc
+.bundle/
+Gemfile.lock
+vendor/bundle/
+
+# ============================================
+# PHP
+# ============================================
+*.php~
+*.php.swp
+vendor/
+composer.lock
+composer.phar
+
+# ============================================
+# JAVA
+# ============================================
+*.class
+*.jar
+*.war
+*.ear
+target/
+.idea/
+*.iml
+
+# ============================================
+# GO
+# ============================================
+*.exe
+*.test
+*.out
+vendor/
+go.sum
+go.mod
+
+# ============================================
+# RUST
+# ============================================
+target/
+Cargo.lock
+
+# ============================================
+# TERRAFORM
+# ============================================
+*.tfstate
+*.tfstate.*
+.terraform/
+.terraform.lock.hcl
+
+# ============================================
+# ANSIBLE
+# ============================================
+*.retry
+*.log
+*.tmp
+*.swp
+*.swo
+*.orig
+*.rej
+
+# ============================================
+# DOCKER
+# ============================================
+*.dockerignore
+*.dockerfile
+*.container
+*.image
+*.tar.gz
+
+# ============================================
+# COMPRESSED FILES
+# ============================================
+*.zip
+*.rar
+*.7z
+*.tar
+*.gz
+*.bz2
+*.xz
+*.lz
+*.lzma
+*.lzo
+*.zst
+
+# ============================================
+# MEDIA
+# ============================================
+*.mp4
+*.avi
+*.mov
+*.wmv
+*.flv
+*.mkv
+*.mp3
+*.wav
+*.flac
+*.aac
+*.ogg
+*.wma
+*.jpg
+*.jpeg
+*.png
+*.gif
+*.bmp
+*.svg
+*.ico
+*.tiff
+*.psd
+*.ai
+*.eps
+
+# ============================================
+# FONT FILES
+# ============================================
+*.ttf
+*.otf
+*.woff
+*.woff2
+*.eot
+
+# ============================================
+# DATABASE BACKUPS
+# ============================================
+*.sql.gz
+*.sql.bak
+*.db.bak
+*.backup
+
+# ============================================
+# SSL CERTIFICATES
+# ============================================
+*.crt
+*.csr
+*.key
+*.pem
+*.p12
+*.pfx
+*.cer
+
+# ============================================
+# SSH KEYS
+# ============================================
+*.pem
+*.ppk
+id_rsa
+id_dsa
+id_ecdsa
+id_ed25519
+*.pub
+
+# ============================================
+# GPG KEYS
+# ============================================
+*.gpg
+*.asc
+*.sig
+
+# ============================================
+# APPLICATION SPECIFIC
+# ============================================
 # PM2
 .pm2/
+pm2-*.log
+ecosystem.config.js
+
+# Nodemon
+nodemon.json
+nodemon-debug.log
+
+# ESLint
+.eslintcache
+
+# Prettier
+.prettiercache
+
+# Babel
+.babelcache
+
+# Webpack
+.webpackcache
+
+# ============================================
+# TESTING
+# ============================================
+*.test.js
+*.spec.js
+*.test.jsx
+*.spec.jsx
+*.test.ts
+*.spec.ts
+*.test.tsx
+*.spec.tsx
+coverage/
+.nyc_output/
+jest.config.js
+*.test-results/
+
+# ============================================
+# MISC
+# ============================================
+*.local
+*.sample
+*.template
+*.example
+*.dist
+*.min
+*.bundled
+*.generated
+*generated.js
+*generated.ts
+*.minified
+*.compiled
+
+# ============================================
+# SYSTEM FILES
+# ============================================
+*.sys
+*.ini
+*.cfg
+*.conf
+*.config
+*.properties
+*.yml
+*.yaml
+!.docker-compose.yml
+!.github/workflows/*.yml
+
+# ============================================
+# CLOUD & DEPLOYMENT
+# ============================================
+.aws/
+.gcloud/
+.azure/
+.terraform/
+*.tfstate
+*.tfstate.*
+*.plan
+*.apply
+*.destroy
+
+# ============================================
+# MONITORING
+# ============================================
+*.datadog
+*.newrelic
+*.sentry
+*.splunk
+*.prometheus
+*.grafana
+
+# ============================================
+# EMAIL
+# ============================================
+*.eml
+*.msg
+*.pst
+*.ost
+
+# ============================================
+# PROJECT SPECIFIC
+# ============================================
+# WhatsApp Bot
+session/
+.wwebjs_auth/
+.wwebjs_cache/
+puppeteer_data/
+data/
+logs/
+*.session
+*.auth
+*.credentials
+*.subscription
+*.payment
+*.invoice
+*.receipt
