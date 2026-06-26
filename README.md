@@ -1,4 +1,6 @@
-# 🤖 WhatsApp Bot Express
+<div align="center">
+  <h1>🤖 WhatsApp Bot Express</h1>
+</div>
 
 <p align="center">
   <img src="https://img.shields.io/badge/Node.js-18.x-green.svg" alt="Node.js">
