@@ -597,5 +597,4 @@ Bot ini dibuat untuk tujuan edukasi. Penggunaan bot ini sepenuhnya tanggung jawa
 <p align="center">
   Made with ❤️ by <a href="https://github.com/yourusername">Your Name</a>
 </p>
-#   B o t - W h a t s a p p - V 1  
- 
+#
