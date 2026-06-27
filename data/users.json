@@ -1,0 +1,42 @@
+[
+  {
+    "id": "user_1782502540472",
+    "phone": "6285119116907",
+    "name": "YourName",
+    "role": "owner",
+    "password": "$2a$10$A/YHmoxnBqPRypQAS/qUVus2B9Dn4ex.xCJkNRTAnd2XfybwB/eYm",
+    "createdAt": "2026-06-26T19:35:40.472Z",
+    "updatedAt": "2026-06-26T19:58:08.235Z",
+    "isActive": true,
+    "permissions": [
+      "manage_users",
+      "manage_admins",
+      "manage_bot",
+      "view_all",
+      "send_message",
+      "send_media",
+      "broadcast",
+      "manage_blocks",
+      "view_logs",
+      "manage_settings"
+    ]
+  },
+  {
+    "id": "user_1782502540548_nvliglb2b",
+    "phone": "6281234567890",
+    "name": "Admin 6281234567890",
+    "role": "admin",
+    "password": "$2a$10$LbH6QbA9/I/FWmk54TprZ.YlRKY63l9MCPBY5pjxE3C.KGEapZL4.",
+    "createdAt": "2026-06-26T19:35:40.548Z",
+    "updatedAt": "2026-06-26T19:35:40.548Z",
+    "isActive": true,
+    "permissions": [
+      "view_all",
+      "send_message",
+      "send_media",
+      "broadcast",
+      "manage_blocks",
+      "view_logs"
+    ]
+  }
+]

@@ -1,0 +1,16 @@
+﻿{
+  "plans": [
+    {
+      "id": "basic",
+      "name": "Basic",
+      "price": 50000,
+      "durationDays": 30
+    },
+    {
+      "id": "premium",
+      "name": "Premium",
+      "price": 100000,
+      "durationDays": 365
+    }
+  ]
+}

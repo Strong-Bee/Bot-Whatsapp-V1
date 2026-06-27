@@ -1,0 +1,38 @@
+whatsapp-bot/
+├── src/
+│   ├── config/
+│   │   └── config.js
+│   ├── controllers/
+│   │   ├── authController.js
+│   │   ├── botController.js
+│   │   └── paymentController.js
+│   ├── middleware/
+│   │   └── auth.js
+│   ├── models/
+│   │   ├── SubscriptionModel.js
+│   │   └── UserModel.js
+│   ├── routes/
+│   │   ├── authRoutes.js
+│   │   ├── botRoutes.js
+│   │   └── paymentRoutes.js
+│   ├── services/
+│   │   ├── GoogleSheetsService.js
+│   │   ├── MidtransService.js
+│   │   └── whatsappService.js
+│   ├── utils/
+│   │   ├── helper.js
+│   │   └── logger.js
+│   └── index.js
+├── data/
+│   ├── subscriptions.json
+│   ├── users.json
+│   └── custom_commands.json
+├── logs/
+│   └── YYYY-MM-DD.log
+├── session/
+│   └── (whatsapp session files)
+├── .env
+├── .gitignore
+├── package.json
+├── package-lock.json
+└── README.md

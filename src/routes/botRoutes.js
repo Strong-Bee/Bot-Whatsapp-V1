@@ -1,71 +1,37 @@
 const express = require("express");
 const router = express.Router();
-const botController = require("../controllers/botController");
-const authMiddleware = require("../middleware/auth");
+const auth = require("../middleware/auth");
+const authorize = require("../middleware/authorize");
+const SubscriptionModel = require("../models/SubscriptionModel");
+const { v4: uuidv4 } = require("uuid");
 
-// ==================== PUBLIC ROUTES ====================
-// Webhook - Public (untuk integrasi dengan layanan lain)
-router.post("/webhook", botController.webhook);
+router.get("/plans", (req, res) => {
+  const plans = SubscriptionModel.getPlans();
+  res.json(plans);
+});
 
-// ==================== PROTECTED ROUTES ====================
-// Get bot status - Semua user yang sudah login
-router.get("/status", authMiddleware.authenticate, botController.getStatus);
+router.post("/plans", auth, authorize("admin", "owner"), (req, res) => {
+  const { name, price, durationDays } = req.body;
+  if (!name || !price || !durationDays)
+    return res.status(400).json({ error: "Missing fields" });
+  const plan = { id: uuidv4(), name, price, durationDays };
+  SubscriptionModel.addPlan(plan);
+  res.status(201).json(plan);
+});
 
-// Get bot stats - Admin/Owner
+router.get("/custom-commands", auth, (req, res) => {
+  const cmds = SubscriptionModel.getCustomCommands();
+  res.json(cmds);
+});
+
+// Optional: admin dashboard
 router.get(
-  "/stats",
-  authMiddleware.authenticate,
-  authMiddleware.requireAdmin(),
-  botController.getBotStats,
-);
-
-// ==================== BOT ACTION ROUTES ====================
-// Send message - Admin/Owner
-router.post(
-  "/send-message",
-  authMiddleware.authenticate,
-  authMiddleware.requireAdmin(),
-  botController.sendMessage,
-);
-
-// Send media via URL - Admin/Owner
-router.post(
-  "/send-media",
-  authMiddleware.authenticate,
-  authMiddleware.requireAdmin(),
-  botController.sendMedia,
-);
-
-// Send image from file - Admin/Owner
-router.post(
-  "/send-image",
-  authMiddleware.authenticate,
-  authMiddleware.requireAdmin(),
-  botController.sendImage,
-);
-
-// Send buttons - Admin/Owner
-router.post(
-  "/send-buttons",
-  authMiddleware.authenticate,
-  authMiddleware.requireAdmin(),
-  botController.sendButtons,
-);
-
-// Broadcast message - Admin/Owner
-router.post(
-  "/broadcast",
-  authMiddleware.authenticate,
-  authMiddleware.requireAdmin(),
-  botController.broadcastMessage,
-);
-
-// Get contact info - Admin/Owner
-router.get(
-  "/contact/:number",
-  authMiddleware.authenticate,
-  authMiddleware.requireAdmin(),
-  botController.getContact,
+  "/admin/dashboard",
+  auth,
+  authorize("admin", "owner"),
+  (req, res) => {
+    res.json({ message: "Welcome to admin dashboard" });
+  },
 );
 
 module.exports = router;

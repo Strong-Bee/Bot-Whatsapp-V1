@@ -1,64 +1,20 @@
 const express = require("express");
 const router = express.Router();
 const authController = require("../controllers/authController");
-const authMiddleware = require("../middleware/auth");
+const auth = require("../middleware/auth");
+const authorize = require("../middleware/authorize");
 
-// ==================== PUBLIC ROUTES ====================
-// Login - Semua user
+router.post("/register", authController.register);
 router.post("/login", authController.login);
+router.get("/profile", auth, authController.profile);
+router.post("/link-phone", auth, authController.linkPhone);
 
-// Logout - Semua user
-router.post("/logout", authController.logout);
-
-// ==================== PROTECTED ROUTES ====================
-// Profile - Semua user yang sudah login
-router.get("/profile", authMiddleware.authenticate, authController.getProfile);
+// Khusus admin/owner
 router.put(
-  "/profile",
-  authMiddleware.authenticate,
-  authController.updateProfile,
-);
-
-// ==================== ADMIN & OWNER ROUTES ====================
-// Get all users - Admin/Owner
-router.get(
-  "/users",
-  authMiddleware.authenticate,
-  authMiddleware.requireAdmin(),
-  authController.getAllUsers,
-);
-
-// Get user by ID - Admin/Owner
-router.get(
-  "/users/:id",
-  authMiddleware.authenticate,
-  authMiddleware.requireAdmin(),
-  authController.getUserById,
-);
-
-// ==================== OWNER ONLY ROUTES ====================
-// Register new user - Owner only
-router.post(
-  "/register",
-  authMiddleware.authenticate,
-  authMiddleware.requireOwner(),
-  authController.register,
-);
-
-// Update user - Owner only
-router.put(
-  "/users/:id",
-  authMiddleware.authenticate,
-  authMiddleware.requireOwner(),
-  authController.updateUser,
-);
-
-// Delete user - Owner only
-router.delete(
-  "/users/:id",
-  authMiddleware.authenticate,
-  authMiddleware.requireOwner(),
-  authController.deleteUser,
+  "/set-role",
+  auth,
+  authorize("admin", "owner"),
+  authController.setRole,
 );
 
 module.exports = router;
